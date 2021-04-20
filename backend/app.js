@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -22,6 +23,7 @@ const limiter = rateLimit({
   max: 100,
 });
 
+app.use(cors());
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
