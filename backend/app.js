@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -23,10 +23,19 @@ const limiter = rateLimit({
   max: 100,
 });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://nikolaev.student.nomoredomains.club',
+    'https://nikolaev.student.nomoredomains.club',
+  ],
+  methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin'],
+  credentials: true,
+};
+app.use('*', cors(corsOptions));
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
