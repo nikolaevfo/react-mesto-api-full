@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
   try {
     payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
-    next(res.status(401).send({ message: `Авторизация не прошла ${JSON.stringify(req)}` }));
+    next(res.status(401).send({ message: 'Авторизация не прошла' }));
   }
 
   req.user = payload;
