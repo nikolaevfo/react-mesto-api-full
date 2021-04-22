@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'interferetion';
 
 const auth = (req, res, next) => {
-  const token = req.qookies.jwt;
+  const token = req.cookies.jwt;
   // const { cookie } = req.headers;
   // if (cookie) {
   //   // eslint-disable-next-line prefer-destructuring
