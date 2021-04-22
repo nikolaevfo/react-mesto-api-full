@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'interferetion';
 
 const auth = (req, res, next) => {
-  /*const token = req.cookies.jwt;
+  const token = req.headers.cookies.jwt;
   // const { cookie } = req.headers;
   // if (cookie) {
   //   // eslint-disable-next-line prefer-destructuring
@@ -13,11 +13,11 @@ const auth = (req, res, next) => {
   try {
     payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
-    next(res.status(401).send({ message: `Авторизация не прошла: ${err}, cookies: ${req.cookies}` }));
+    next(res.status(401).send({ message: `Авторизация не прошла: ${err}, cookies: ${req.headers}` }));
   }
 
-  // req.user = payload;*/
-  req.user = { _id: '608038483d6dc1495cc865ff' };
+  // req.user = payload;
+  // req.user = { _id: '608038483d6dc1495cc865ff' };
   next();
 };
 

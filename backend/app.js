@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
 const router = require('./routes');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const NotFoundError = require('./errors/not-found-err');
 
@@ -44,10 +45,12 @@ app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
 
+app.use(requestLogger);
 app.use(router);
 app.use('*', () => {
   throw new NotFoundError('Страница не найдена');
 });
+app.use(errorLogger);
 app.use(errors());
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
