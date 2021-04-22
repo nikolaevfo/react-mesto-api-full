@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const validator = require('validator');
 const User = require('../models/user');
 
-const JWT_SECRET = 'interferetion';
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const NotFoundError = require('../errors/not-found-err');
 const RequestError = require('../errors/req-err');
@@ -161,7 +161,11 @@ const login = (req, res, next) => {
           if (!matched) {
             throw new AuthError('Неправильные почта или пароль');
           }
-          const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+          const token = jwt.sign(
+            { _id: user._id },
+            NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+            { expiresIn: '7d' },
+          );
           const sendUser = {
             name: user.name,
             about: user.about,
