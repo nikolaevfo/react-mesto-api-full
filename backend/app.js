@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -38,6 +39,7 @@ const corsOptions = {
 app.use('*', cors(corsOptions));
 app.use(limiter);
 app.use(helmet());
+app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use(router);
