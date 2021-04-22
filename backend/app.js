@@ -26,19 +26,20 @@ const limiter = rateLimit({
   max: 1000,
 });
 
-const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'http://nikolaev.student.nomoredomains.club',
-    'https://nikolaev.student.nomoredomains.club',
-  ],
-  methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin'],
-  credentials: true,
-};
-app.use('*', cors(corsOptions));
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:3000',
+//     'http://nikolaev.student.nomoredomains.club',
+//     'https://nikolaev.student.nomoredomains.club',
+//   ],
+//   methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: ['Content-Type', 'origin'],
+//   credentials: true,
+// };
+// app.use('*', cors(corsOptions));
+app.use(cors());
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
