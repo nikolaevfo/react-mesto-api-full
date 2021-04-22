@@ -4,6 +4,8 @@
 
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
+Публичный IP-адрес сервера: 178.154.234.241.
+
 Ссылка на сайт [Mesto](https://nikolaev.student.nomoredomains.club)
 
 Ссылка на [API](https://api.nikolaevfo.student.nomoredomains.club)
