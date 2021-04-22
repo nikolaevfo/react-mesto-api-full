@@ -19,6 +19,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 const app = express();
+app.use(cookieParser());
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -40,7 +42,6 @@ app.use('*', cors(corsOptions));
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(cookieParser());
 
 app.use(router);
 app.use('*', () => {
