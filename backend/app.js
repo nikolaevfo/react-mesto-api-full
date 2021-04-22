@@ -10,7 +10,7 @@ const router = require('./routes');
 
 const NotFoundError = require('./errors/not-found-err');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -26,20 +26,20 @@ const limiter = rateLimit({
   max: 1000,
 });
 
-// const corsOptions = {
-//   origin: [
-//     'http://localhost:3000',
-//     'http://nikolaev.student.nomoredomains.club',
-//     'https://nikolaev.student.nomoredomains.club',
-//   ],
-//   methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204,
-//   allowedHeaders: ['Content-Type', 'origin'],
-//   credentials: true,
-// };
-// app.use('*', cors(corsOptions));
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://nikolaev.student.nomoredomains.club',
+    'https://nikolaev.student.nomoredomains.club',
+   ],
+   methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
+   preflightContinue: false,
+   optionsSuccessStatus: 204,
+   allowedHeaders: ['Content-Type', 'origin'],
+   credentials: true,
+};
+app.use('*', cors(corsOptions));
+// app.use(cors());
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
@@ -55,7 +55,7 @@ app.use((err, req, res, next) => {
     .status(statusCode)
     .send({
       message: statusCode === 500
-        ? 'На сервере произошла ошибка'
+        ? `На сервере произошла ошибка ${err}`
         : message,
     });
   next();
