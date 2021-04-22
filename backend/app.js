@@ -31,15 +31,7 @@ const corsOptions = {
     'http://localhost:3000',
     'http://nikolaev.student.nomoredomains.club',
     'https://nikolaev.student.nomoredomains.club',
-   ],
-   methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
-   preflightContinue: false,
-   optionsSuccessStatus: 204,
-   allowedHeaders: ['Content-Type', 'origin'],
-   credentials: true,
-};
-app.use('*', cors(corsOptions));
-],
+  ],
   methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
@@ -48,7 +40,6 @@ app.use('*', cors(corsOptions));
 };
 app.use('*', cors(corsOptions));
 
->>>>>>> a173aabf31901111ce7311eca80e4b5734701091
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
