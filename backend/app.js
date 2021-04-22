@@ -39,8 +39,8 @@ const corsOptions = {
 app.use('*', cors(corsOptions));
 app.use(limiter);
 app.use(helmet());
-app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(router);
 app.use('*', () => {
