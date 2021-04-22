@@ -39,7 +39,16 @@ const corsOptions = {
    credentials: true,
 };
 app.use('*', cors(corsOptions));
-// app.use(cors());
+],
+  methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin'],
+  credentials: true,
+};
+app.use('*', cors(corsOptions));
+
+>>>>>>> a173aabf31901111ce7311eca80e4b5734701091
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
