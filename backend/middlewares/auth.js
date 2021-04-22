@@ -17,7 +17,7 @@ const auth = (req, res, next) => {
   }
 
   // req.user = payload;*/
-  req.user = '608038483d6dc1495cc865ff';
+  req.user = { _id: '608038483d6dc1495cc865ff' };
   next();
 };
 
