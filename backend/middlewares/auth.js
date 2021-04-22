@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
   //   // eslint-disable-next-line prefer-destructuring
   //   token = cookie.split('=')[1];
   // }
-
+console.log(req.cookies);
   let payload;
   try {
     payload = jwt.verify(token, JWT_SECRET);
