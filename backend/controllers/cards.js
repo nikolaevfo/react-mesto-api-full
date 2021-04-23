@@ -1,9 +1,8 @@
-const validator = require('validator');
 const Card = require('../models/card');
 
 const NotFoundError = require('../errors/not-found-err');
 const RequestError = require('../errors/req-err');
-const AuthError = require('../errors/auth-err');
+const ForbiddenError = require('../errors/forbidden-err');
 
 const getCards = (req, res, next) => {
   Card.find({})
@@ -39,7 +38,7 @@ const deleteCard = (req, res, next) => {
           .then((delCard) => res.send(delCard))
           .catch(next);
       } else {
-        throw new AuthError('Вы не можете удалить не свою карточку');
+        throw new ForbiddenError('Вы не можете удалить не свою карточку');
       }
     }, (err) => {
       if (err.message === 'NotValidId') {
