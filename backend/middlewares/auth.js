@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+const AuthError = require('../errors/auth-err');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 const auth = (req, res, next) => {
@@ -8,7 +9,7 @@ const auth = (req, res, next) => {
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
-    next(res.status(401).send({ message: `Авторизация не прошла: ${err}, cookies: ${req.cookies}` }));
+    throw new AuthError('Авторизация не прошла');
   }
 
   req.user = payload;

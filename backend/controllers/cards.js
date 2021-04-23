@@ -15,10 +15,6 @@ const getCards = (req, res, next) => {
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
 
-  if (!validator.isURL(link)) {
-    throw new RequestError('Ссылка неверная');
-  }
-
   Card.create({ name, link, owner: req.user._id })
     .then((card) => {
       res.send(card);

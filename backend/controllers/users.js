@@ -142,14 +142,6 @@ const createUser = (req, res, next) => {
 const login = (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).send({ message: 'Email или пароль не могут быть пустыми' });
-  }
-
-  if (!validator.isEmail(email)) {
-    return res.status(400).send({ message: 'Email неверный' });
-  }
-
   return User.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
