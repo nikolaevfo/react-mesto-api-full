@@ -102,14 +102,6 @@ const createUser = (req, res, next) => {
     name, about, avatar, email, password,
   } = req.body;
 
-  if (!email || !password) {
-    throw new RequestError('Email или пароль не могут быть пустыми');
-  }
-
-  if (!validator.isEmail(email)) {
-    throw new RequestError('Email неверный');
-  }
-
   return User.findOne({ email })
     .then((user) => {
       if (user) {
