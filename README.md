@@ -4,7 +4,7 @@
 
 Публичный IP-адрес сервера: 178.154.234.241.
 
-#### Ссылка на репозиторий с фронтэндом [Mesto](https://github.com/nikolaevfo/react-mesto-auth)
+#### Ссылка на репозиторий с фронтендом [Mesto](https://github.com/nikolaevfo/react-mesto-auth)
 
 #### Ссылка на сайт [Mesto](https://nikolaev.student.nomoredomains.club)
 
