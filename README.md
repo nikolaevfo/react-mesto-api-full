@@ -6,8 +6,6 @@
 
 #### Ссылка на репозиторий с фронтендом [Mesto](https://github.com/nikolaevfo/react-mesto-auth)
 
-#### Ссылка на сайт [Mesto](https://nikolaev.student.nomoredomains.club)
-
 #### Ссылка на [API](https://api.nikolaevfo.student.nomoredomains.club)
 
 #### В процессе работы использованы:
